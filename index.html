@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="임수빈 | 모빌리티 임베디드 SW 개발자. FreeRTOS 센서·모터 제어, Linux 커널 드라이버 분석 포트폴리오.">
-<title>임수빈 | 모빌리티 임베디드 SW 개발자 포트폴리오</title>
+<meta name="description" content="임수빈 | 임베디드 Linux · BSP 개발자. FreeRTOS 센서·모터 제어, Linux DisplayPort 드라이버 분석·디버깅 포트폴리오.">
+<title>임수빈 | 임베디드 Linux · BSP 개발자 포트폴리오</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -57,7 +57,7 @@ blockquote{margin:0 auto 20px;max-width:640px;background:var(--brand-soft);borde
 .info a.v:hover{text-decoration:underline}
 
 /* 2. 기술 */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
 .skill h3{margin:0 0 10px;font-size:15px;display:flex;align-items:center;gap:8px}
 .skill ul{margin:0;padding:0;list-style:none;font-size:14px}
 .skill li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px dashed var(--line)}
@@ -97,7 +97,7 @@ blockquote{margin:0 auto 20px;max-width:640px;background:var(--brand-soft);borde
 .links a:hover{border-color:var(--brand)}
 
 /* 4. AI 학습 기록 */
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px}
 .day{display:flex;flex-direction:column;justify-content:space-between}
 .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .badge{font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);border:1px solid var(--brand-line);padding:3px 10px;border-radius:99px}
@@ -131,15 +131,16 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
 <main>
   <!-- 1. 소개 -->
   <section id="about" class="hero">
-    <span class="chip"><span aria-hidden="true">🚗</span> 모빌리티 임베디드 SW 개발자</span>
+    <span class="chip"><span aria-hidden="true">🔧</span> 임베디드 Linux · BSP 개발자</span>
     <h1>임수빈</h1>
-    <blockquote>“내가 작성한 코드 한 줄로 도로 위의 누군가가 더 안전해지기를 꿈꿉니다.”</blockquote>
-    <p class="lead">TOPST D3 보드의 Cortex-R5 FreeRTOS 환경에서 초음파 센서·모터 제어 Task를 구현했고, Linux DisplayPort 커널 디바이스 드라이버를 ftrace·dmesg로 분석해 문서로 정리했습니다. 코드뿐 아니라 클럭·전압 같은 하드웨어 설정까지 확인하며, 안정적으로 동작하는 차량용 SW를 만드는 것이 목표입니다.</p>
+    <blockquote>“C 코드 몇 줄이 하드웨어를 깨우는 순간, 그 경계를 끝까지 확인하는 개발자가 되고 싶습니다.”</blockquote>
+    <p class="lead">TOPST D3 보드의 Cortex-R5 FreeRTOS 환경에서 초음파 센서·모터 제어 Task를 구현했고, Linux DisplayPort 커널 디바이스 드라이버를 ftrace·dmesg로 분석해 모니터 재연결 시 화면이 나오지 않던 오류를 수정했습니다. 코드뿐 아니라 클럭·전압 같은 하드웨어 설정까지 확인하며, 하드웨어를 안정적으로 구동하는 SW를 만드는 것이 목표입니다.</p>
     <div class="info">
-      <div class="card"><span class="k">Education</span><span class="v"><span aria-hidden="true">🎓</span> 대구대학교 전자공학전공</span></div>
+      <div class="card"><span class="k">Education</span><span class="v"><span aria-hidden="true">🎓</span> 대구대학교 전자공학전공</span>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">2025.02 졸업<br>텔레칩스 임베디드 SW스쿨 1기 (6개월)<br>정보처리기사</div></div>
       <div class="card"><span class="k">GitHub</span><a class="v" href="https://github.com/subbin5" target="_blank" rel="noopener">github.com/subbin5</a></div>
       <div class="card"><span class="k">Interests</span>
-        <div class="pills"><span class="pill">Embedded Linux</span><span class="pill">Device Driver</span><span class="pill">RTOS</span><span class="pill">차량 전장 SW</span></div>
+        <div class="pills"><span class="pill">Embedded Linux</span><span class="pill">Device Driver</span><span class="pill">RTOS</span><span class="pill">BSP</span></div>
       </div>
     </div>
   </section>
@@ -154,12 +155,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
           <li><b>FreeRTOS</b><span>페달 오조작 방지 시스템</span></li>
           <li><b>ARM Cortex-R5 (TOPST D3)</b><span>페달 오조작 방지 시스템</span></li>
           <li><b>하드웨어 타이머 · GPIO</b><span>µs 단위 펄스 폭 측정</span></li>
-          <li><b>UART (115200bps)</b><span>보드 간 통신 형식 정의</span></li>
+          <li><b>UART · I2C</b><span>라즈베리파이–TOPST 통신, 조도 센서 (미니 프로젝트)</span></li>
         </ul>
       </div>
       <div class="card skill"><h3><span aria-hidden="true">🐧</span> Linux · 아키텍처</h3>
         <ul>
-          <li><b>커널 디바이스 드라이버</b><span>DisplayPort 드라이버 분석</span></li>
+          <li><b>커널 디바이스 드라이버</b><span>DisplayPort 드라이버 분석·오류 수정</span></li>
           <li><b>ftrace · dmesg · printk</b><span>커널 로그·호출 구조 추적</span></li>
           <li><b>ARMv7 아키텍처</b><span>레지스터·실행 모드 학습</span></li>
           <li><b>C++</b><span>학습</span></li>
@@ -170,6 +171,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
           <li><b>저항 분배 회로 설계</b><span>5V → 3.3V 레벨 변환</span></li>
           <li><b>초음파 센서 · 브레드보드 배선</b><span>페달 오조작 방지 시스템</span></li>
           <li><b>요구사항 정의 · 단위/통합 테스트</b><span>페달 오조작 방지 시스템</span></li>
+          <li><b>StarUML · draw.io</b><span>드라이버 호출 흐름 도식화</span></li>
           <li><b>Git · GitHub</b><span>프로젝트 관리·배포</span></li>
           <li><b>Apps Script · JavaScript</b><span>유통기한 관리 앱</span></li>
         </ul>
@@ -205,10 +207,10 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
           <div>
             <h4>담당 업무</h4>
             <ul class="dot">
-              <li>Cortex-R5 FreeRTOS에서 <b>초음파 센서 Task와 모터 Task</b>를 C로 구현</li>
+              <li>Cortex-R5 FreeRTOS에서 <b>초음파 센서·모터 Task와 오토홀드 기능</b>을 C로 구현</li>
               <li>하드웨어 타이머 Free-run 카운터로 Echo 펄스 폭을 재서 <b>거리 측정</b></li>
               <li>5V Echo를 3.3V GPIO에 맞추는 <b>저항 분배 회로</b> 설계·배선</li>
-              <li>중앙 보드 담당자와 <b>UART 데이터 형식·범위</b>를 정의하고, 판단 결과를 받아 모터 제어</li>
+              <li>중앙 보드의 오조작 판단 결과를 UART로 받아 <b>모터 제어</b></li>
               <li>전·후방 보드 <b>아키텍처 설계, 요구사항 정의서, 단위·통합 테스트</b></li>
             </ul>
             <h4>결과</h4>
@@ -224,7 +226,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
               <div><b>문제</b> 계산한 거리가 실제 거리의 약 2배. 코드를 고쳐도 해결되지 않음</div>
               <div><b>원인</b> 매뉴얼에서 타이머 클럭을 확인하니 24MHz를 12분주해 <b style="min-width:0">1 Tick = 0.5µs</b>였는데, 1µs로 계산하고 있었음</div>
               <div><b>해결</b> Tick → 시간 변환식을 실제 클럭 기준으로 수정</div>
-              <div><b>결과</b> 측정 거리가 실제 거리와 일치</div>
+              <div><b>결과</b> 종이에 5·10·15·20·25·30cm를 표시해 거리마다 실측 비교, 측정값이 실제 거리와 일치</div>
             </div>
             <div class="ts">
               <strong>5V 센서 출력과 3.3V GPIO의 전압 차이</strong>
@@ -240,22 +242,39 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
       <!-- 프로젝트 2 -->
       <article class="card proj">
         <div class="proj-top">
-          <h3><span class="pnum">02</span>DisplayPort 커널 디바이스 드라이버 분석</h3>
-          <span class="kind">Linux 커널</span>
+          <h3><span class="pnum">02</span>DisplayPort 커널 드라이버 분석 및 재연결 오류 수정</h3>
+          <span class="kind">개인 프로젝트 · Linux 커널</span>
         </div>
-        <p class="one">DisplayPort 드라이버의 Spec과 Subsystem 흐름을 분석하고 커널 로그로 호출 구조를 추적해 문서화</p>
+        <p class="one">DisplayPort 드라이버의 Spec과 Subsystem 흐름을 분석하고, 모니터 재연결 시 화면이 나오지 않던 오류를 추적해 수정</p>
+        <div class="meta">
+          <div><span class="k">과정</span>텔레칩스 임베디드 SW스쿨</div>
+          <div><span class="k">인원</span>1명</div>
+          <div><span class="k">대상</span>DisplayPort 1.4 TX 드라이버</div>
+          <div><span class="k">환경</span>TCC805x · Linux</div>
+        </div>
         <div class="cols">
           <div>
             <h4>한 일</h4>
             <ul class="dot">
-              <li>DisplayPort <b>Spec과 커널 Subsystem 흐름</b> 분석</li>
+              <li>20여 개 파일로 이루어진 드라이버의 <b>호출 흐름을 StarUML·draw.io로 도식화</b></li>
+              <li>DisplayPort <b>Spec과 DRM 서브시스템 흐름</b> 분석</li>
               <li><b>ftrace, dmesg, printk</b>로 커널 로그와 드라이버 호출 구조 추적</li>
               <li>분석 결과를 <b>매뉴얼로 정리</b></li>
             </ul>
+            <h4>사용 기술</h4>
+            <div class="pills" style="margin-bottom:18px"><span class="pill">Linux Kernel</span><span class="pill">Device Driver</span><span class="pill">DRM</span><span class="pill">ftrace</span><span class="pill">dmesg</span><span class="pill">printk</span></div>
           </div>
           <div>
-            <h4>사용 기술</h4>
-            <div class="pills" style="margin-bottom:18px"><span class="pill">Linux Kernel</span><span class="pill">Device Driver</span><span class="pill">ftrace</span><span class="pill">dmesg</span><span class="pill">printk</span></div>
+            <h4>트러블슈팅</h4>
+            <div class="ts">
+              <strong>모니터 재연결 시 화면이 나오지 않던 문제</strong>
+              <div><b>문제</b> 첫 연결은 정상이지만, 분리 후 다시 연결하면 링크 트레이닝 Clock Recovery 단계에서 "CR is not done" 반복</div>
+              <div><b>시도</b> 성공 시 DPCD 값을 저장해 복구 → Fatal Error로 재부팅. DPCD는 모니터 쪽 상태라 되돌릴 대상이 아님을 확인. 이후 PHY 초기화 제거, 링크 속도 기본값, 지연 후 재시도로 원인 후보를 하나씩 제거</div>
+              <div><b>해결</b> 링크 트레이닝 함수와 HPD 콜백에서 PHY를 다시 초기화</div>
+              <div><b>결과</b> 분리·재연결을 반복해도 화면 정상 출력. 이후 분리 시 PHY를 직전 링크 속도로 리셋하지만 재연결 시 최대 속도로 트레이닝하는 구간이 있음을 코드로 확인</div>
+            </div>
+            <h4>배운 점</h4>
+            <p class="t">증상을 되돌리기보다, 어디까지가 하드웨어 상태이고 어디부터가 드라이버 흐름인지 먼저 나눠야 원인에 닿는다는 것을 배웠습니다.</p>
           </div>
         </div>
       </article>
@@ -338,7 +357,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
   <!-- 5. 연락처 -->
   <section id="contact">
     <div class="cta">
-      <h2>함께 안전한 모빌리티 사회를 만들어 나가고 싶습니다.</h2>
+      <h2>하드웨어를 정확하게 깨우는 코드를 함께 만들고 싶습니다.</h2>
       <p>커피챗과 문의는 언제나 환영합니다.</p>
       <div class="acts">
         <a class="mail" href="mailto:nklove517@gmail.com"><span aria-hidden="true">✉️</span> nklove517@gmail.com</a>

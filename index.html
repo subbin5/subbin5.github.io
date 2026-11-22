@@ -190,11 +190,11 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
       <article class="card proj">
         <div class="proj-top">
           <h3><span class="pnum">01</span>페달 오조작 방지 보조 시스템</h3>
-          <span class="kind">팀 프로젝트 · 대표</span>
+          <span class="kind">팀 프로젝트</span>
         </div>
         <p class="one">페달 입력으로 오조작을 판단해 모터를 멈추는 차량 보조 시스템을 모형 차로 구현</p>
         <div class="meta">
-          <div><span class="k">기간</span>약 1.5개월 (~2024.12)</div>
+          <div><span class="k">기간</span>2024.11 ~ 2024.12 (약 1.5개월)</div>
           <div><span class="k">인원</span>6명</div>
           <div><span class="k">역할</span>전·후방 보드 담당</div>
           <div><span class="k">환경</span>TOPST D3 · Cortex-R5 FreeRTOS</div>
@@ -212,13 +212,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
               <li>Cortex-R5 FreeRTOS에서 <b>초음파 센서·모터 Task와 오토홀드 기능</b>을 C로 구현</li>
               <li>하드웨어 타이머 Free-run 카운터로 Echo 펄스 폭을 재서 <b>거리 측정</b></li>
               <li>5V Echo를 3.3V GPIO에 맞추는 <b>저항 분배 회로</b> 설계·배선</li>
-              <li>중앙 보드의 오조작 판단 결과를 UART로 받아 <b>모터 제어</b></li>
-              <li>전·후방 보드 <b>아키텍처 설계, 요구사항 정의서, 단위·통합 테스트</b></li>
+              <li>중앙 보드에서 받은 오조작 판단 결과를 반영해 <b>모터 제어</b></li>
+              <li>팀원과 함께 전·후방 보드 <b>아키텍처 설계</b>, <b>요구사항 정의서와 단위·통합 테스트</b> 작성</li>
             </ul>
             <h4>결과</h4>
             <ul class="dot">
               <li>2024.12.18 최종 시연에서 의도대로 동작</li>
-              <li>중앙 보드의 오조작 판단을 UART로 받아 실제 모터를 정지</li>
+              <li>중앙 보드의 오조작 판단 결과에 따라 실제 모터를 정지</li>
             </ul>
           </div>
           <div>
@@ -228,7 +228,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
               <div><b>문제</b> 계산한 거리가 실제 거리의 약 2배. 코드를 고쳐도 해결되지 않음</div>
               <div><b>원인</b> 매뉴얼에서 타이머 클럭을 확인하니 24MHz를 12분주해 <b style="min-width:0">1 Tick = 0.5µs</b>였는데, 1µs로 계산하고 있었음</div>
               <div><b>해결</b> Tick → 시간 변환식을 실제 클럭 기준으로 수정</div>
-              <div><b>결과</b> 종이에 5·10·15·20·25·30cm를 표시해 거리마다 실측 비교, 측정값이 실제 거리와 일치</div>
+              <div><b>결과</b> 종이에 5·10·15·20·25·30cm를 표시해 거리마다 실측 비교, 모든 거리에서 오차 1cm 이내</div>
             </div>
             <div class="ts">
               <strong>5V 센서 출력과 3.3V GPIO의 전압 차이</strong>
@@ -250,6 +250,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
         <p class="one">DisplayPort 드라이버의 Spec과 Subsystem 흐름을 분석하고, 모니터 재연결 시 화면이 나오지 않던 오류를 추적해 수정</p>
         <div class="meta">
           <div><span class="k">과정</span>텔레칩스 임베디드 SW스쿨</div>
+          <div><span class="k">기간</span>2024.11 ~ 2024.12</div>
           <div><span class="k">인원</span>1명</div>
           <div><span class="k">대상</span>DisplayPort 1.4 TX 드라이버</div>
           <div><span class="k">환경</span>TCC805x · Linux</div>
@@ -273,7 +274,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
               <div><b>문제</b> 첫 연결은 정상이지만, 분리 후 다시 연결하면 링크 트레이닝 Clock Recovery 단계에서 "CR is not done" 반복</div>
               <div><b>시도</b> 성공 시 DPCD 값을 저장해 복구 → Fatal Error로 재부팅. DPCD는 모니터 쪽 상태라 되돌릴 대상이 아님을 확인. 이후 PHY 초기화 제거, 링크 속도 기본값, 지연 후 재시도로 원인 후보를 하나씩 제거</div>
               <div><b>해결</b> 링크 트레이닝 함수와 HPD 콜백에서 PHY를 다시 초기화</div>
-              <div><b>결과</b> 분리·재연결을 반복해도 화면 정상 출력. 이후 분리 시 PHY를 직전 링크 속도로 리셋하지만 재연결 시 최대 속도로 트레이닝하는 구간이 있음을 코드로 확인</div>
+              <div><b>결과</b> LG 모니터에서 분리·재연결을 반복해도 매번 화면 정상 출력. 이후 분리 시 PHY를 직전 링크 속도로 리셋하지만 재연결 시 최대 속도로 트레이닝하는 구간이 있음을 코드로 확인</div>
             </div>
             <h4>배운 점</h4>
             <p class="t">증상을 되돌리기보다, 어디까지가 하드웨어 상태이고 어디부터가 드라이버 흐름인지 먼저 나눠야 원인에 닿는다는 것을 배웠습니다.</p>
@@ -299,7 +300,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 20px;bor
             <h4>한 일</h4>
             <ul class="dot">
               <li>음식 입력·수정·삭제, <b>D-day 자동 계산</b>, 같은 이름 묶어 보기</li>
-              <li>여러 기기 동시 저장 충돌을 막는 <b>LockService</b>, 줄 번호와 이름을 함께 확인하는 수정·삭제</li>
+              <li>줄 번호와 이름을 함께 확인하는 수정·삭제</li>
               <li>식약처 <b>식품영양성분DB 공공 API</b>로 칼로리 검색, 먹은 양에 따른 kcal 계산</li>
               <li>매일 아침 임박·지난 음식을 보내는 <b>Gmail 알림</b> (시간 트리거)</li>
               <li>화면을 <b>PWA</b>로 분리해 GitHub Pages에 배포, 아이폰 홈 화면 앱으로 설치. 비밀번호로 API 보호</li>

@@ -309,7 +309,7 @@
                                 <span>팀 프로젝트 · 6명</span>
                             </div>
                             <h3 class="text-xl font-bold mb-2">페달 오조작 방지 보조 시스템</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">페달 입력으로 오조작을 판단해 모터를 멈추는 차량 보조 시스템을 모형 차로 구현. 전·후방 보드 담당 (TOPST D3 · Cortex-R5 FreeRTOS)</p>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">페달 입력으로 오조작을 판단해 모터를 멈추는 차량 보조 시스템을 모형 차로 구현. 전·후방 보드의 초음파 센서·모터·오토홀드 담당 (TOPST D3 · Cortex-R5 FreeRTOS)</p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
                             <div class="flex flex-wrap gap-x-2 text-xs text-slate-500 font-mono">
@@ -484,7 +484,7 @@
             <li>Cortex-R5 FreeRTOS에서 <b>초음파 센서·모터 Task와 오토홀드 기능</b>을 C로 구현</li>
             <li>하드웨어 타이머 Free-run 카운터로 Echo 펄스 폭을 재서 <b>거리 측정</b></li>
             <li>5V Echo를 3.3V GPIO에 맞추는 <b>저항 분배 회로</b> 설계·배선</li>
-            <li>중앙 보드에서 받은 오조작 판단 결과를 반영해 <b>모터 제어</b></li>
+            <li><b>모터 제어</b>: 하드웨어 PWM(PDM) 듀티로 속도를, 방향 GPIO로 전진·후진·정지를 제어하고 중앙 보드에서 받은 오조작 판단 결과를 반영</li>
             <li>팀원과 함께 전·후방 보드 <b>아키텍처 설계</b>, <b>요구사항 정의서와 단위·통합 테스트</b> 작성</li>
         </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">트러블슈팅</h4>

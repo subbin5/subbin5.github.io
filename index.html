@@ -269,8 +269,8 @@
                         <div class="w-full font-mono text-[11px] sm:text-xs text-slate-300 space-y-1.5 mt-5">
                             <p>HPD Unplugged → Plugged</p>
                             <p>Link Training · Clock Recovery</p>
-                            <p class="text-rose-400">"CR is not done"</p>
-                            <p class="text-emerald-400">→ PHY 재초기화 후 재연결 정상</p>
+                            <p class="text-rose-400">Clock Recovery 실패</p>
+                            <p class="text-emerald-400">→ 컨트롤러·PHY 재초기화 후 재연결 정상</p>
                         </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
@@ -459,11 +459,16 @@
         </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">트러블슈팅 · 모니터 재연결 시 화면이 나오지 않던 문제</h4>
         <div class="ts space-y-1.5 text-sm rounded-xl bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-4">
-            <div><b class="text-amber-700 dark:text-amber-400">문제</b> 첫 연결은 정상이지만, 분리 후 다시 연결하면 링크 트레이닝 Clock Recovery 단계에서 "CR is not done" 반복</div>
-            <div><b class="text-amber-700 dark:text-amber-400">시도</b> 성공 시 DPCD 값을 저장해 복구 → Fatal Error로 재부팅. DPCD는 모니터 쪽 상태라 되돌릴 대상이 아님을 확인. 이후 PHY 초기화 제거, 링크 속도 기본값, 지연 후 재시도로 원인 후보를 하나씩 제거</div>
-            <div><b class="text-amber-700 dark:text-amber-400">해결</b> 링크 트레이닝 함수와 HPD 콜백에서 PHY를 다시 초기화</div>
-            <div><b class="text-amber-700 dark:text-amber-400">결과</b> LG 모니터에서 분리·재연결을 반복해도 매번 화면 정상 출력. 이후 분리 시 PHY를 직전 링크 속도로 리셋하지만 재연결 시 최대 속도로 트레이닝하는 구간이 있음을 코드로 확인</div>
+            <div><b class="text-amber-700 dark:text-amber-400">문제</b> 첫 연결은 정상이지만, 분리 후 다시 연결하면 링크 트레이닝 Clock Recovery 단계에서 실패</div>
+            <div><b class="text-amber-700 dark:text-amber-400">시도</b> 성공 시 DPCD 값을 저장해 복구 → Fatal Error로 재부팅. DPCD 링크 상태는 모니터가 실제 신호를 받아 판단한 값이라 송신 측이 다시 써도 복구되지 않음을 확인. 이후 PHY 초기화 제거, 링크 속도 기본값, 지연 후 재시도를 차례로 시도했지만 단독으로는 해결되지 않음</div>
+            <div><b class="text-amber-700 dark:text-amber-400">해결</b> <code>Dptx_Core_Init</code>에 PHY 전원 차단·재인가를 추가하고, HPD 핸들러가 재연결을 감지하면 링크 트레이닝 전에 이 함수 전체(컨트롤러 리셋 포함)를 먼저 실행</div>
+            <div><b class="text-amber-700 dark:text-amber-400">결과</b> LG 모니터에서 분리·재연결을 반복해도 매번 화면 정상 출력. 이후 코드를 다시 추적해, 원래 드라이버는 링크 속도가 바뀔 때만 이 초기화를 호출해 같은 속도로 재연결하면 컨트롤러·PHY 리셋을 건너뛴다는 것을 확인</div>
         </div>
+        <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">남은 과제</h4>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>컨트롤러 리셋과 PHY 전원 사이클 중 무엇이 결정적이었는지는 나눠 시험하지 못함 → 원인 레지스터를 좁혀 필요한 부분만 초기화하는 것이 개선 방향</li>
+            <li>EDID 읽기 중 AUX Defer가 반복되는 문제는 미해결</li>
+        </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">배운 점</h4>
         <p class="text-sm">증상을 되돌리기보다, 어디까지가 하드웨어 상태이고 어디부터가 드라이버 흐름인지 먼저 나눠야 원인에 닿는다는 것을 배웠습니다.</p>
     </template>
@@ -504,6 +509,7 @@
         <ul class="list-disc pl-5 space-y-1 text-sm">
             <li>2024.12.18 최종 시연에서 의도대로 동작</li>
             <li>중앙 보드의 오조작 판단 결과에 따라 실제 모터를 정지</li>
+            <li>초음파 센서가 전방 3cm 이내 장애물을 감지하면 모터 구동 차단</li>
         </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">배운 점</h4>
         <p class="text-sm">코드 바깥의 하드웨어 설정이 결과를 좌우하고, 보드끼리 약속한 데이터 형식이 정확히 지켜져야 하나의 시스템이 된다는 것을 배웠습니다.</p>

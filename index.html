@@ -300,7 +300,7 @@
                             <p>Timer 24MHz / 12분주</p>
                             <p class="text-rose-400">1 Tick = 1µs 로 계산 (오류)</p>
                             <p class="text-emerald-400">1 Tick = 0.5µs 로 수정</p>
-                            <p class="text-amber-300">5~30cm 실측, 오차 1cm 이내</p>
+                            <p class="text-amber-300">1~30cm, 1cm 간격 실측 비교</p>
                         </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
@@ -495,17 +495,17 @@
         <ul class="list-disc pl-5 space-y-1 text-sm">
             <li>Cortex-R5 FreeRTOS에서 <b>초음파 센서·모터 Task와 오토홀드 기능</b>을 C로 구현</li>
             <li>하드웨어 타이머 Free-run 카운터로 Echo 펄스 폭을 재서 <b>거리 측정</b></li>
-            <li>5V Echo를 3.3V GPIO에 맞추는 <b>저항 분배 회로</b> 설계·배선</li>
+            <li>5V Echo를 3.3V GPIO에 맞추는 <b>저항 분배 회로</b> 구성·배선</li>
             <li><b>모터 제어</b>: 하드웨어 PWM(PDM) 듀티로 속도를, 방향 GPIO로 전진·후진·정지를 제어하고 중앙 보드에서 받은 오조작 판단 결과를 반영</li>
             <li>팀원과 함께 전·후방 보드 <b>아키텍처 설계</b>, <b>요구사항 정의서와 단위·통합 테스트</b> 작성</li>
         </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">트러블슈팅</h4>
         <div class="ts space-y-1.5 text-sm rounded-xl bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-4 mb-3">
             <p class="font-bold">측정 거리가 실제의 2배로 나오던 문제</p>
-            <div><b class="text-amber-700 dark:text-amber-400">문제</b> 계산한 거리가 실제 거리의 약 2배. 코드를 고쳐도 해결되지 않음</div>
+            <div><b class="text-amber-700 dark:text-amber-400">문제</b> 계산한 거리가 실제 거리의 약 2배. 계산식과 코드를 다시 봐도 원인을 찾지 못함</div>
             <div><b class="text-amber-700 dark:text-amber-400">원인</b> 매뉴얼에서 타이머 클럭을 확인하니 24MHz를 12분주해 1 Tick = 0.5µs였는데, 1µs로 계산하고 있었음</div>
             <div><b class="text-amber-700 dark:text-amber-400">해결</b> Tick → 시간 변환식을 실제 클럭 기준으로 수정</div>
-            <div><b class="text-amber-700 dark:text-amber-400">결과</b> 종이에 5·10·15·20·25·30cm를 표시해 거리마다 실측 비교, 모든 거리에서 오차 1cm 이내</div>
+            <div><b class="text-amber-700 dark:text-amber-400">결과</b> 종이에 1cm부터 30cm까지 1cm 간격으로 표시해 거리마다 실측 비교</div>
         </div>
         <div class="ts space-y-1.5 text-sm rounded-xl bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-4">
             <p class="font-bold">5V 센서 출력과 3.3V GPIO의 전압 차이</p>

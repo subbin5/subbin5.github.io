@@ -453,9 +453,9 @@
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">트러블슈팅 · 모니터 재연결 시 화면이 나오지 않던 문제</h4>
         <div class="ts space-y-1.5 text-sm rounded-xl bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-4">
             <div><b class="text-amber-700 dark:text-amber-400">문제</b> 첫 연결은 정상이지만, 분리 후 다시 연결하면 링크 트레이닝 Clock Recovery 단계에서 실패</div>
-            <div><b class="text-amber-700 dark:text-amber-400">시도</b> 성공 시 DPCD 값을 저장해 복구 → Fatal Error로 재부팅. DPCD 링크 상태는 모니터가 실제 신호를 받아 판단한 값이라 송신 측이 다시 써도 복구되지 않음을 확인. 이후 PHY 초기화 제거, 링크 속도 기본값, 지연 후 재시도를 차례로 시도했지만 단독으로는 해결되지 않음</div>
+            <div><b class="text-amber-700 dark:text-amber-400">시도</b> 성공 시 DPCD 값을 저장해 복구 → Fatal Error로 재부팅. DPCD 링크 상태는 모니터가 실제 신호를 받아 판단한 값이라 송신 측이 다시 써도 복구되지 않음을 확인. 이후 링크 속도 기본값, 지연 후 재시도를 차례로 시도했지만 단독으로는 해결되지 않음</div>
             <div><b class="text-amber-700 dark:text-amber-400">해결</b> <code>Dptx_Core_Init</code>에 PHY 전원 차단·재인가를 추가하고, HPD 핸들러가 재연결을 감지하면 링크 트레이닝 전에 이 함수 전체(컨트롤러 리셋 포함)를 먼저 실행</div>
-            <div><b class="text-amber-700 dark:text-amber-400">결과</b> LG 모니터에서 분리·재연결을 반복해도 매번 화면 정상 출력. 이후 코드를 다시 추적해, 원래 드라이버는 링크 속도가 바뀔 때만 이 초기화를 호출해 같은 속도로 재연결하면 컨트롤러·PHY 리셋을 건너뛴다는 것을 확인</div>
+            <div><b class="text-amber-700 dark:text-amber-400">결과</b> LG 모니터에서 분리·재연결을 반복해도 매번 화면 정상 출력. 이후 코드를 다시 추적해, 재연결 시 트레이닝 경로에서는 최대 링크 속도와 실제 쓸 속도가 다를 때만 이 초기화를 호출해, 같은 속도로 재연결하면 컨트롤러·PHY 리셋을 건너뛴다는 것을 확인</div>
         </div>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">첫 연결과 재연결의 차이 · 코드로 다시 확인</h4>
         <p class="text-sm font-semibold mb-1.5">첫 연결: 정상</p>
@@ -510,7 +510,7 @@
             <li>초음파 센서가 전방 3cm 이내 장애물을 감지하면 모터 구동 차단</li>
         </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">배운 점</h4>
-        <p class="text-sm">코드 바깥의 하드웨어 설정이 결과를 좌우하고, 보드끼리 약속한 데이터 형식이 정확히 지켜져야 하나의 시스템이 된다는 것을 배웠습니다.</p>
+        <p class="text-sm">코드 바깥의 하드웨어 설정이 결과를 좌우하고, 보드 사이의 신호와 동작까지 함께 검증해야 하나의 시스템이 된다는 것을 배웠습니다.</p>
     </template>
 
     <template id="detail-led">

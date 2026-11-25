@@ -503,6 +503,13 @@
             <div><b class="text-amber-700 dark:text-amber-400">문제</b> 초음파 센서 Echo는 5V, SoC GPIO는 3.3V</div>
             <div><b class="text-amber-700 dark:text-amber-400">해결</b> 저항 분배 회로로 전압을 낮춰 GPIO에 연결</div>
         </div>
+        <div class="ts space-y-1.5 text-sm rounded-xl bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-4 mt-3">
+            <p class="font-bold">오토홀드가 특정 상황에서 실행되지 않던 문제</p>
+            <div><b class="text-amber-700 dark:text-amber-400">문제</b> 특정 상황에서 오토홀드 기능이 실행되지 않음</div>
+            <div><b class="text-amber-700 dark:text-amber-400">원인</b> 후보 두 가지. ① 태스크 스택이 128 word로 BSP 최소값(250 word)보다 작은데 printf를 호출해 <b>스택이 부족했을 가능성</b> ② 입력 핀 GPG6이 같은 보드의 초음파 트리거 출력과 겹친 <b>핀 충돌</b></div>
+            <div><b class="text-amber-700 dark:text-amber-400">해결</b> 태스크 스택을 512 word로 늘리고 입력 핀을 GPG10으로 변경</div>
+            <div><b class="text-amber-700 dark:text-amber-400">한계</b> 두 가지를 함께 고쳐 어느 쪽이 결정적이었는지는 나눠 확인하지 못함. 다시 한다면 하나씩 바꾸고 스택 사용량을 <code>uxTaskGetStackHighWaterMark</code>로 실측</div>
+        </div>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">결과</h4>
         <ul class="list-disc pl-5 space-y-1 text-sm">
             <li>2024.12.18 최종 시연에서 의도대로 동작</li>

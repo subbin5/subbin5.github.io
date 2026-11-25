@@ -233,12 +233,11 @@
                             <i data-lucide="activity" class="w-6 h-6"></i>
                         </div>
                         <h3 class="text-lg font-bold mb-2">디버깅 · 하드웨어</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">커널 로그·호출 구조 추적, 센서 전압 레벨 맞춤, 단위·통합 테스트</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">커널 로그·호출 구조 추적, 센서 전압 레벨 맞춤</p>
                         <div class="flex flex-wrap gap-2 text-xs font-medium">
                             <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">ftrace · dmesg · printk</span>
                             <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">저항 분배 회로 (5V→3.3V)</span>
                             <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">브레드보드 배선</span>
-                            <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">요구사항 정의 · 단위/통합 테스트</span>
                         </div>
                     </div>
                 </div>
@@ -254,14 +253,15 @@
                 </div>
 
                 <div class="flex flex-wrap gap-2" id="project-filters">
-                    <button data-filter="all" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-primary-600 text-white transition">전체 (3)</button>
+                    <button data-filter="all" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-primary-600 text-white transition">전체 (4)</button>
                     <button data-filter="kernel" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 transition">Linux 커널</button>
                     <button data-filter="rtos" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 transition">RTOS</button>
                     <button data-filter="web" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 transition">AI 협업 웹앱</button>
+                    <button data-filter="mini" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 transition">미니 프로젝트</button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="project-grid">
                 <!-- 프로젝트: DisplayPort -->
                 <article data-category="kernel" class="project-card group rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition flex flex-col">
                     <div class="aspect-video overflow-hidden bg-slate-900 relative flex items-center justify-center p-6">
@@ -316,6 +316,36 @@
                                 <span>2024.11 ~ 2024.12</span><span>· 약 1.5개월</span>
                             </div>
                             <button type="button" data-detail="detail-pedal" class="detail-btn shrink-0 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
+                                상세보기 <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 프로젝트: 스마트 LED 조명 -->
+                <article data-category="mini" class="project-card group rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition flex flex-col">
+                    <div class="aspect-video overflow-hidden bg-slate-900 relative flex items-center justify-center p-6">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 font-mono text-[11px] font-bold">UART · I2C 연동</span>
+                        <div class="w-full font-mono text-[11px] sm:text-xs text-slate-300 space-y-1.5 mt-5">
+                            <p>Raspberry Pi → UART → TOPST</p>
+                            <p class="text-emerald-400">1 · LED 전원 ON</p>
+                            <p class="text-rose-400">0 · LED 전원 OFF</p>
+                            <p class="text-amber-300">I2C 조도 센서 → LED 밝기 조절</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2 text-xs font-semibold text-amber-700 dark:text-amber-400 mb-2">
+                                <span>개인 미니 프로젝트 · UART · I2C</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">실내 스마트 LED 조명 시스템</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">라즈베리파이와 TOPST 보드를 UART로 연결해 LED 전원을 제어하고, 조도 센서 값에 맞춰 밝기를 조절</p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
+                            <div class="flex flex-wrap gap-x-2 text-xs text-slate-500 font-mono">
+                                <span>2024.10</span><span>· 1명</span>
+                            </div>
+                            <button type="button" data-detail="detail-led" class="detail-btn shrink-0 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
                                 상세보기 <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
                             </button>
                         </div>
@@ -455,8 +485,12 @@
             <li>20여 개 파일로 이루어진 드라이버의 <b>호출 흐름을 StarUML·draw.io로 도식화</b></li>
             <li>DisplayPort <b>Spec과 DRM 서브시스템 흐름</b> 분석</li>
             <li><b>ftrace, dmesg, printk</b>로 커널 로그와 드라이버 호출 구조 추적</li>
-            <li>분석 결과를 <b>매뉴얼로 정리</b></li>
         </ul>
+        <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">호출 흐름 도식 (2024 산출물)</h4>
+        <div class="grid sm:grid-cols-2 gap-3">
+            <figure><a href="images/dp-attach.png" target="_blank" rel="noopener noreferrer"><img src="images/dp-attach.png" alt="모니터 연결: DRM attach 시퀀스 다이어그램" width="648" height="435" class="w-full h-auto rounded-lg border border-slate-200 dark:border-slate-700 bg-white"></a><figcaption class="text-xs text-slate-500 mt-1">모니터 연결: DRM attach</figcaption></figure>
+            <figure><a href="images/dp-detach.png" target="_blank" rel="noopener noreferrer"><img src="images/dp-detach.png" alt="모니터 분리: DRM detach 시퀀스 다이어그램" width="648" height="439" class="w-full h-auto rounded-lg border border-slate-200 dark:border-slate-700 bg-white"></a><figcaption class="text-xs text-slate-500 mt-1">모니터 분리: DRM detach</figcaption></figure>
+        </div>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">2026.11 다시 정리 · 교육판 드라이버 코드 기준</h4>
         <ul class="list-disc pl-5 space-y-1 text-sm">
             <li>VESA 공개 자료의 스펙 항목(계층 구조, Main Link, AUX, HPD, TU, MSA, MST)을 <b>구현하는 드라이버 함수에 하나씩 대응</b></li>
@@ -471,6 +505,11 @@
             <div><b class="text-amber-700 dark:text-amber-400">해결</b> <code>Dptx_Core_Init</code>에 PHY 전원 차단·재인가를 추가하고, HPD 핸들러가 재연결을 감지하면 링크 트레이닝 전에 이 함수 전체(컨트롤러 리셋 포함)를 먼저 실행</div>
             <div><b class="text-amber-700 dark:text-amber-400">결과</b> LG 모니터에서 분리·재연결을 반복해도 매번 화면 정상 출력. 이후 코드를 다시 추적해, 원래 드라이버는 링크 속도가 바뀔 때만 이 초기화를 호출해 같은 속도로 재연결하면 컨트롤러·PHY 리셋을 건너뛴다는 것을 확인</div>
         </div>
+        <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">첫 연결과 재연결의 차이 · 코드로 다시 확인</h4>
+        <p class="text-sm font-semibold mb-1.5">첫 연결: 정상</p>
+        <div class="flex flex-wrap items-center gap-1.5 text-xs font-semibold"><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">부트로더가 설정한 PHY 상태</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">커널이 이어받음</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">링크 트레이닝</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md bg-emerald-700 text-white">화면 출력</span></div>
+        <p class="text-sm font-semibold mt-3 mb-1.5">분리 후 재연결: 실패</p>
+        <div class="flex flex-wrap items-center gap-1.5 text-xs font-semibold"><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">분리할 때 PHY 전원 내려감</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">같은 속도라 초기화 생략</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">Clock Recovery 실패</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md bg-rose-700 text-white">화면 없음</span></div>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">남은 과제</h4>
         <ul class="list-disc pl-5 space-y-1 text-sm">
             <li>컨트롤러 리셋과 PHY 전원 사이클 중 무엇이 결정적이었는지는 나눠 시험하지 못함 → 원인 레지스터를 좁혀 필요한 부분만 초기화하는 것이 개선 방향</li>
@@ -497,7 +536,6 @@
             <li>하드웨어 타이머 Free-run 카운터로 Echo 펄스 폭을 재서 <b>거리 측정</b></li>
             <li>5V Echo를 3.3V GPIO에 맞추는 <b>저항 분배 회로</b> 구성·배선</li>
             <li><b>모터 제어</b>: 하드웨어 PWM(PDM) 듀티로 속도를, 방향 GPIO로 전진·후진·정지를 제어하고 중앙 보드에서 받은 오조작 판단 결과를 반영</li>
-            <li>팀원과 함께 전·후방 보드 <b>아키텍처 설계</b>, <b>요구사항 정의서와 단위·통합 테스트</b> 작성</li>
         </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">트러블슈팅</h4>
         <div class="ts space-y-1.5 text-sm rounded-xl bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-4 mb-3">
@@ -520,6 +558,20 @@
         </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">배운 점</h4>
         <p class="text-sm">코드 바깥의 하드웨어 설정이 결과를 좌우하고, 보드끼리 약속한 데이터 형식이 정확히 지켜져야 하나의 시스템이 된다는 것을 배웠습니다.</p>
+    </template>
+
+    <template id="detail-led">
+        <div class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
+            <p><b class="text-slate-900 dark:text-white">구분</b> 개인 미니 프로젝트 · <b class="text-slate-900 dark:text-white">환경</b> Raspberry Pi 4 · TOPST D3 · Linux · C</p>
+        </div>
+        <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">시스템 구성</h4>
+        <div class="flex flex-wrap items-center gap-1.5 text-xs font-semibold"><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">초음파 감지</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">라즈베리파이</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">UART</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">TOPST</span><span class="text-slate-400">→</span><span class="px-2.5 py-1 rounded-md bg-primary-600 text-white">LED</span></div>
+        <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">한 일</h4>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li><b>UART</b>: 라즈베리파이–TOPST 통신으로 LED 전원 제어 (1이면 ON, 0이면 OFF)</li>
+            <li>초음파 센서가 물체를 감지하면 LED 켜기</li>
+            <li><b>I2C</b>: 조도 센서로 읽은 주변 밝기에 맞춰 LED 밝기 조절</li>
+        </ul>
     </template>
 
     <template id="detail-food">

@@ -246,10 +246,9 @@
                             <i data-lucide="activity" class="w-6 h-6"></i>
                         </div>
                         <h3 class="text-lg font-bold mb-2">디버깅 · 하드웨어</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">커널 로그·호출 구조 추적, 센서 전압 레벨 맞춤</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">커널 로그·호출 구조 추적, 브레드보드 배선</p>
                         <div class="flex flex-wrap gap-2 text-xs font-medium">
                             <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">ftrace · dmesg · printk</span>
-                            <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">저항 분배 회로 (5V→3.3V)</span>
                             <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">브레드보드 배선</span>
                         </div>
                     </div>
@@ -487,7 +486,6 @@
         <ul class="list-disc pl-5 space-y-1 text-sm">
             <li>Cortex-R5 FreeRTOS에서 <b>초음파 센서·모터 Task와 오토홀드 기능</b>을 C로 구현</li>
             <li>하드웨어 타이머 Free-run 카운터로 Echo 펄스 폭을 재서 <b>거리 측정</b></li>
-            <li>5V Echo를 3.3V GPIO에 맞추는 <b>저항 분배 회로</b> 구성·배선</li>
             <li><b>모터 제어</b>: 하드웨어 PWM(PDM) 듀티로 속도를, 방향 GPIO로 전진·후진·정지를 제어하고 중앙 보드에서 받은 오조작 판단 결과를 반영</li>
         </ul>
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">트러블슈팅</h4>

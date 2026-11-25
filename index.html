@@ -309,9 +309,9 @@
                     <div class="aspect-video overflow-hidden bg-slate-900 relative flex items-center justify-center p-6">
                         <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 font-mono text-[11px] font-bold">거리 2배 오차의 원인</span>
                         <div class="w-full font-mono text-[11px] sm:text-xs text-slate-300 space-y-1.5 mt-5">
-                            <p>Timer 24MHz / 12분주</p>
-                            <p class="text-rose-400">1 Tick = 1µs 로 계산 (오류)</p>
-                            <p class="text-emerald-400">1 Tick = 0.5µs 로 수정</p>
+                            <p>Timer 클럭 · 분주 설정 확인</p>
+                            <p class="text-rose-400">1 Tick을 실제의 2배로 계산 (오류)</p>
+                            <p class="text-emerald-400">실제 1 Tick 시간으로 수정</p>
                             <p class="text-amber-300">1~30cm, 1cm 간격 실측 비교</p>
                         </div>
                     </div>
@@ -491,8 +491,8 @@
         <h4 class="font-bold text-primary-600 dark:text-primary-400 mt-5 mb-2">트러블슈팅</h4>
         <div class="ts space-y-1.5 text-sm rounded-xl bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-4 mb-3">
             <p class="font-bold">측정 거리가 실제의 2배로 나오던 문제</p>
-            <div><b class="text-amber-700 dark:text-amber-400">문제</b> 계산한 거리가 실제 거리의 약 2배. 계산식과 코드를 다시 봐도 원인을 찾지 못함</div>
-            <div><b class="text-amber-700 dark:text-amber-400">원인</b> 매뉴얼에서 타이머 클럭을 확인하니 24MHz를 12분주해 1 Tick = 0.5µs였는데, 1µs로 계산하고 있었음</div>
+            <div><b class="text-amber-700 dark:text-amber-400">문제</b> 계산한 거리가 실제 거리의 약 2배. 센서와 배선을 의심하고 코드의 순서도 바꿔 봤지만 원인을 찾지 못함</div>
+            <div><b class="text-amber-700 dark:text-amber-400">원인</b> 매뉴얼에서 타이머 클럭의 분주 설정을 확인하니, 실제 1 Tick 시간이 계산에 쓴 값의 절반이었음</div>
             <div><b class="text-amber-700 dark:text-amber-400">해결</b> Tick → 시간 변환식을 실제 클럭 기준으로 수정</div>
             <div><b class="text-amber-700 dark:text-amber-400">결과</b> 종이에 1cm부터 30cm까지 1cm 간격으로 표시해 거리마다 실측 비교</div>
         </div>
